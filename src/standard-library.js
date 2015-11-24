@@ -14,30 +14,30 @@ var Collection = function () {
     this.isEmpty = true;
 };
 Collection.prototype.pickFirst = function () {
-    if (!this.isEmpty) {
-        var first = this.collection.shift();
-        this.length -= 1;
-        if (this.length === 0) {
-            clear(this);
-        } else {
-            this.first = this.collection[0];
-        }
-        return first;
+    if (this.isEmpty) {
+        return this.first;
     }
-    return this.first;
+    var first = this.collection.shift();
+    this.length -= 1;
+    if (this.length === 0) {
+        clear(this);
+    } else {
+        this.first = this.collection[0];
+    }
+    return first;
 };
 Collection.prototype.pickLast = function () {
-    if (!this.isEmpty) {
-        var last = this.collection.pop();
-        this.length -= 1;
-        if (this.length === 0) {
-            clear(this);
-        } else {
-            this.last = this.collection[this.length - 1];
-        }
-        return last;
+    if (this.isEmpty) {
+        return this.last;
     }
-    return this.last;
+    var last = this.collection.pop();
+    this.length -= 1;
+    if (this.length === 0) {
+        clear(this);
+    } else {
+        this.last = this.collection[this.length - 1];
+    }
+    return last;
 };
 Collection.prototype.insertFirst = function (item) {
     if (typeof item !== 'undefined') {
